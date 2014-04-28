@@ -1,0 +1,19 @@
+doctype html
+html(lang="#{currentLocale().locale}")
+    head
+        meta(charset="utf-8")
+        title Fermat
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+        include styles
+
+    body
+        .container
+            include header
+            include sidebar
+            #page-content
+                block content
+            hr
+            #footcontent
+                include content2
+            include footer
+        include scripts

@@ -1,0 +1,128 @@
+#page-content{
+    margin :135px 0 0 0;
+    background-color: #ffffff;
+    padding: 23px 25px 20px;
+
+
+}
+body{
+    background-color: #efefef;
+    line-height: 1.6em;
+}
+.sub-menu{
+    float: left;
+    width: 225px;
+    margin-right: 30px;
+}
+.subBlock {
+    float: left;
+    width: 835px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+ }
+ul{
+    list-style: none;
+}
+.router-images li {
+    background: none !important;
+    padding: 0!important;
+    display: inline-block;
+    margin: 0 30px 2.5em;
+    width: 150px;
+}
+.router-images .image img {
+    max-width: 150px;
+}
+.router-images .link{
+    text-align: center;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color: #222;
+}
+a {
+    color: #999;
+    text-decoration: none;
+}
+.product_picture{
+    max-width: 400px;
+    float: right;
+    margin: 0 0 10px 20px;
+}
+.product_images{
+    max-width: 300px;
+    text-align: center;
+    margin: 0 0 10px 20px;
+}
+h1{
+    color: #ca1936;
+    font-size: 1.5em;
+    font-family: Arial, sans-serif;
+    text-transform:uppercase;
+}
+.mainTitle {
+    color: #002846;
+    font-size: 1.5em;
+    background: url('/assets/kolo.png') 0 0 no-repeat;
+    padding: 5px 0 8px 40px;
+    margin: 0 0 12px 0;
+}
+.subBlock h1 {
+    color: #ca1936;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+}
+#content2 {
+    padding: 20px 25px 30px;
+    position: relative;
+    background-color: #ffffff;
+}
+#col1 {
+    width: 240px;
+    float: left;
+    margin-right: 40px;
+}
+#col2 {
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+#col3 {
+    width: 433px;
+    float: left;
+}
+.tel {
+    background-color: red;
+    line-height: 42px;
+    padding: 0 0 0 50px;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.email a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+#footer {
+    padding: 7px 21px 10px 14px;
+    margin: 12px 3px 20px;
+    color: #6f6f6f;
+    border-top: 7px solid #c9c9c9;
+}
+#footer ul {
+    float: right;
+    padding-top: 7px;
+}
+#footer li {
+    float: left;
+    padding-left: 25px;
+}
+#lang span {
+    float: left;
+}
+.language-bar li{
+    float: left;
+    margin: 2px 3px 2px;
+}

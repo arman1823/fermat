@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/products/create") Create Product
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Model
+                        th Description
+                        th Parameters
+                        th Type
+                        th Picture
+                        th Delete
+                tbody
+                    each product in products
+                        tr
+                            td: a(href="/admin/product/#{product.id}") #{_o(product.model)}
+                            td !{_o(product.description)}
+                            td !{_o(product.parameters)}
+                            td !{product.type}
+                            td
+                                if(product.picture)
+                                    img(src="/uploads/#{product.picture}", width="100")
+                            td
+                                a.edit(href="/admin/product/#{product.id}") Edit
+                                br
+                                a.delete(href="/admin/product/delete?id=#{product.id}") Delete

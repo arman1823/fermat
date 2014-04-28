@@ -1,0 +1,53 @@
+#menu.navbar-wrapper
+    div.container
+        div.navbar.navbar-inverse.navbar-static-top(role='navigation')
+
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href='/') FERMAT
+            .navbar-collapse.nav-collapse.collapse.navbar-header
+                ul.nav.navbar-nav
+                    li.dropdown
+                        a.dropdown-toggle.js-activated(href='#')
+                            | About company
+                            b.caret
+                        ul.dropdown-menu
+                            li.divider
+                            li.dropdown-header Dropdown header
+                            li
+                                a(href='/history') History
+                            li
+                                a(href='/production-equipment') Production Equipment
+                            li
+                                a(href='/facilities') Facilities
+                            li
+                                a(href='/customer-service') Customer Service
+                    li.dropdown
+
+                        a.dropdown-toggle.js-activated(href='/products', data-toggle='dropdown')
+                            | Products
+                            b.caret
+                        ul.dropdown-menu
+                            li
+                                a(tabindex='-1', href='/products') Menu Item
+                            li
+                                a(tabindex='-1', href='#') Bootstrap 3 Does Not Support Submenus
+                    li.dropdown
+                        a.dropdown-toggle.js-activated(href='#', data-toggle='dropdown')
+                            | References and Photos
+                            b.caret
+                        ul.dropdown-menu
+                            li
+                                a(tabindex='-1', href='#') Our Reference Customers
+                    li.dropdown
+                        a.js-activated(href='#', data-toggle='dropdown')
+                            | Used machines
+                    li.dropdown
+                        a.dropdown-toggle.js-activated(href='/contacts', data-toggle='dropdown')
+                            | Contact
+                            b.caret
+                        ul.dropdown-menu
+                            li
+                                a(tabindex='-1', href='/contats-used-machines') Contats Used machines

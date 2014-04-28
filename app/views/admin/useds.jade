@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/useds/create") Create Used
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Model
+                        th Description
+                        th Parameters
+                        th Type
+                        th Picture
+                        th Delete
+                tbody
+                    each used in useds
+                        tr
+                            td: a(href="/admin/used/#{used.id}") #{_o(used.model)}
+                            td !{_o(used.description)}
+                            td !{_o(used.parameters)}
+                            td !{used.type}
+                            td
+                                if(used.picture)
+                                    img(src="/uploads/#{used.picture}", width="100")
+                            td
+                                a.edit(href="/admin/used/#{used.id}") Edit
+                                br
+                                a.delete(href="/admin/used/delete?id=#{used.id}") Delete

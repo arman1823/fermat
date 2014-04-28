@@ -1,0 +1,66 @@
+extends layout
+
+block content
+
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/products") Products List
+        form(action="/admin/product/#{product.id}", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Model
+                                        input.form-control(type="text", name="model[#{locale.locale}]", value="#{_o(product.model, locale.locale)}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Description
+                                        textarea.form-control( name="description[#{locale.locale}]") #{_o(product.description)}
+                                .row
+                                    .form-group.col-md-12
+                                        label Parameters
+                                        textarea.form-control(name="parameters[#{locale.locale}]") #{_o(product.parameters, locale.locale)}
+                    .row
+                        .form-group.col-md-6
+                            label(for="brand-section-select") Type
+                            select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="type")
+                                option(value="")
+                                option(value="Horizontal boring mills Table type", selected=product.type=='Horizontal boring mills Table type') Horizontal boring mills Table type
+                                option(value="Horizontal boring mills Floor type", selected=product.type=='Horizontal boring mills Floor type') Horizontal boring mills Floor type
+                                option(value="Milling machines", selected=product.type=='Milling machines') Milling machines
+                                option(value="Accessories", selected=product.type=='Accessories') Accessories
+                                option(value="Grinding machines", selected=product.type=='Grinding machines') Grinding machines
+                    .row.content-images
+                        .form-group.col-md-6
+                            label Images
+                            each image in images
+                                .row
+                                    .col-md-4
+                                        img(src="/uploads/#{image.file}" width="100")
+                                    .col-md-8
+                                        | order &nbsp;
+                                        input(type="text", name="order[id#{image.id}]", value="#{image.order || 0}")
+                                        br
+                                        a.delete(href="/admin/delete-image/#{image.id}") Delete image
+                            input#image(type="file", name="image")
+                        .form-group.col-md-6
+                            label(for="picture") Picture
+                            if (product.picture)
+                                br
+                                img(src="/uploads/#{product.picture}" width="100")
+                                a.delete(href="/admin/product/delete-picture/#{product.id}") Delete picture
+                            input#logo(type="file", name="picture", tabindex="6")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="7") Save
+                .clearfix

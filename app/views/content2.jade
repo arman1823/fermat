@@ -1,0 +1,87 @@
+#content2.clearfix
+    a#top(href='#menu')
+        | top
+        span
+        #col1
+            h3 Contact Us
+            .adress
+                strong FERMAT Group, a.s.
+            p  
+            .tel
+                | +420277
+                span.hidden _
+                | 009601
+            .tel
+                | +420277
+                span.hidden _
+                | 009603
+            .email
+                a(href='mailto:info@fermatmachinery.com') export@fermatmachinery.com
+            p
+                a.btnLike(href='/contacts')
+                    span more info
+        #col2
+            h3 You might be interested in
+            ul
+                li
+                    a(href='/special-machines') Special machines
+                li
+                    a(href='/wrf-130-150-160-cnc') Floor type - WRF CNC
+                li
+                    a(href='/wrft-130-150-160-cnc') Table type - WRFT
+                li
+                    a(href='/wft-13-r-cnc') Table type - WFT R
+                li
+                    a(href='/wft-13-cnc') Table type - WFT
+                li
+                    a(href='/accessories') Accessories
+                li
+                    a(href='/parts-and-services') Services
+                li
+                    a(href='/wrf-mill-m') Floor type - WRF Mill
+                li
+                    a(href='/wf-13-cnc') Horizontal boring Machine
+                li
+                    a(href='/milling-heads-h') Milling Heads
+                li
+                    a(href='/atc-automatic-tool-changer') Automatic Tool Changer
+        #col3
+            h3.news
+                a(name='faq') Questions & answers
+            .newsBlock
+                h4 how much does the specific machine cost?
+                .newsText
+                    | Send us your enquiry to export@fermatmachinery.com and we will make you an offer with the price.
+            .newsBlock
+                h4 How to clamp face plate into the spindle?
+                .newsText
+                    | D’Andrea head is clamped automatically and the FH face plate needs 4 nuts to be hold  in hollow spindle.
+            a.btnLike.fll(href='/dotazy/')
+                span Archive
+            a#faq-add.btnLike(href='#')
+                span Add question
+            .clear
+            form#form-faq(action='#faq', method='post')
+                fieldset
+                    input(type='hidden', name='faq', value='1')
+                    input(type='hidden', name='configuration_id', value='2')
+                    br
+                    label
+                        | Question
+                        span.required  *
+                    textarea(cols='1', rows='1', title='Text dotazu', name='question')
+                    label
+                        | E-mail
+                        span.required  *
+                    input.textInput(type='text', name='email', title='E-mail k zaslání odpvědi', value='')
+                    label
+                        | Phone
+                        span.required  *
+                    input.textInput(type='text', name='phone', title='Telefonní kontakt', value='')
+                    label Company
+                    input.textInput(type='text', name='company', title='Název firmy', value='')
+                    label WWW
+                    input.textInput(type='text', name='www', title='WWW stránky', value='')
+                    span.button
+                        input(type='submit', value='Send question')
+

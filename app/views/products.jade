@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    #products-page.clearfix
+        include nav/submenu
+        .subBlock.router-images
+            ul
+                each product in products
+                        li
+                            .image
+                                if(product.picture)
+                                    img(src="/uploads/#{product.picture}")
+                            .link: a(href="/product/#{product.id}") #{_o(product.model)}
+
+    mixin bx(box, rand_color)
+        var img = box.image;
+
+
+

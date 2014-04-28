@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/useds") Useds List
+        form(action="/admin/useds/create", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Model
+                                        input.form-control(type="text", name="model[#{locale.locale}]", value="#{form.model ? form.model[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Description
+                                        textarea.form-control(name="description[#{locale.locale}]") #{form.description ? form.description[locale.locale] : ''}
+                                .row
+                                    .form-group.col-md-12
+                                        label Parameters
+                                        textarea.form-control(name="parameters[#{locale.locale}]") #{form.parameters ? form.parameters[locale.locale] : ''}
+                    .row
+                        .form-group.col-md-6
+                            label(for="brand-section-select") Type
+                            select#brand-section-select(data-placeholder="Please choose a section", autocomplete="off", name="type")
+                                option(value="")
+                                option(value="Horizontal boring mills Table type", selected=form.type=='Horizontal boring mills Table type') Horizontal boring mills Table type
+                                option(value="Horizontal boring mills Floor type", selected=form.type=='Horizontal boring mills Floor type') Horizontal boring mills Floor type
+                                option(value="Milling machines", selected=form.type=='Milling machines') Milling machines
+                                option(value="Accessories", selected=form.type=='Accessories') Accessories
+                                option(value="Grinding machines", selected=form.type=='Grinding machines') Grinding machines
+                    .row
+                        .form-group.col-md-6
+                            label(for="picture") Picture
+                            input#logo(type="file", name="picture", tabindex="5")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix

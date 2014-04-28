@@ -1,0 +1,40 @@
+extends layout
+
+
+block content
+    #products-page.clearfix
+        .sub-menu
+            ul.nav.nav-pills.nav-stacked
+                li
+                    a(href='/history') History
+                li
+                    a(href='/production-equipment') Production Equipment
+                li
+                    a(href='/facilities') Facilities
+                li
+                    a(href='/customer-service') Customer Service
+        .subBlock.router-images
+            h1 History of FERMAT Company
+                table.table-styled.history
+                    tbody
+                        tr
+                            td
+                                p
+                                    strong FERMAT Machinery
+                                    | is a renowned Czech manufacturer of machine tools with a focus on Horizontal Boring and Milling machines. The history of the oldest Fermat member
+                                    strong dates back to 1902
+                                    | when Mr. Frantisek Wawerka started his first business and built a new factory specialized in the production of Lathes & Drilling machines. Over a one hundred year long tradition in machine tool production places the company among dominant Machine Tool Manufacturers in the European as well as the Worldwide market.
+                                p
+                                    | Today FERMAT has about 530 employees working in 8 FERMAT branches. The consolitated Annual Sales reached 57 million € in 2011.
+                            td
+                                p
+                                    img(src='/admin/files/image/fermat-company-history.jpg', alt='')
+                                p
+                                    img(src='/admin/files/image/fermat-company-history-%20boring.jpg', alt='')
+                                h2 and present...
+                                p
+                                    img(alt='', src='/admin/files/image/fermat-praha-hala.jpg')
+                                p
+                                    img(alt='', src='/admin/files/image/fermat-brno.jpg')
+    mixin bx(box, rand_color)
+        var img = box.image;
