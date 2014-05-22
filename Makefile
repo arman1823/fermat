@@ -5,7 +5,7 @@ dev:
 	@export NODE_ENV=development && node app.js
 
 prod:
-	@export NODE_ENV=production && node app.js
+	@export NODE_ENV=production && forever app.js
 
 sync:
 	@rsync -rz --relative --progress --exclude-from=.rsync-exclude . ym@saturn.o.2fp.net:~/lib/nodejs | grep 'to-check'
