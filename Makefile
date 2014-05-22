@@ -1,3 +1,6 @@
+all:
+	@forever app.js
+
 build:
 	@bin/precompile.js
 
