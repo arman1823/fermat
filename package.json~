@@ -13,7 +13,7 @@
     "stylus-type-utils": "0.0.x",
     "pbkdf2-hasher":"0.0.x",
     "nconf": "0.6.x",
-    "winston": "0.7.2",
+    "winston": "0.7.x",
     "pg": "2.11.x",
     "db-kit": "0.1.x",
     "passport": "0.1.x",

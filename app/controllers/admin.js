@@ -713,14 +713,14 @@ module.exports = {
 
   brands: function(req, res) {
     kit.models.brand.find({}, function(err, results) {
-        console.log(results);
+       // console.log(results);
       res.render('admin/brands', { brands: results });
     });
   },
 
   brandsCreateView: function(req, res) {
     var form = req.flash('form');
-    console.log(form,"brandsCreateView","Arman");
+   // console.log(form,"brandsCreateView","Arman");
     res.render('admin/createBrand', { errors: req.flash('brandError') || [] ,
       form: form.length > 0 ? form[0] : {}});
   },
@@ -773,9 +773,9 @@ module.exports = {
     if (req.files.logo && req.files.logo.size > 0) {
      
       if (config.get('allowedImageTypes').indexOf(req.files.logo.type) != -1) {
-        console.log(req.files.logo, "logo" );
-        console.log(req.files.logo.path, "path" );
-        console.log(req.files.logo.type, "logo type" );
+      //  console.log(req.files.logo, "logo" );
+        //console.log(req.files.logo.path, "path" );
+        //console.log(req.files.logo.type, "logo type" );
         var fileExt = path.extname(req.files.logo.path);
         var newFileName = fileName() + fileExt;
         var is = fs.createReadStream(req.files.logo.path);
@@ -957,7 +957,7 @@ module.exports = {
 
   products: function(req, res) {
     kit.models.product.find({}, function(err, results) {
-        console.log(results[0].model);
+      //  console.log(results[0].model);
       res.render('admin/products', { products: results });
 
     });
@@ -965,7 +965,7 @@ module.exports = {
 
   productsCreateView: function(req, res) {
     var form = req.flash('form');
-    console.log(form,"productsCreateView","Arman");
+   // console.log(form,"productsCreateView","Arman");
     res.render('admin/createProduct', { errors: req.flash('productError') || [] ,
       form: form.length > 0 ? form[0] : {}});
   },
@@ -975,7 +975,7 @@ module.exports = {
       , description = locales.encode(req.body.description)
       , parameters = locales.encode(req.body.parameters)
       , type = req.body.type;
-     console.log(req.body,"productsCreate","Arman");
+  //   console.log(req.body,"productsCreate","Arman");
 
 
 
@@ -1057,7 +1057,7 @@ module.exports = {
     }
 
     kit.models.product.find({ where: { id: productId } }, function(err, results) {
-        console.log(results[0]);
+     //   console.log(results[0]);
       if (results.length == 0) {
         res.redirect('/admin/products');
         return;
@@ -1143,7 +1143,7 @@ if(_.isArray(order)){
 
     useds: function(req, res) {
         kit.models.used.find({}, function(err, results) {
-            console.log(results);
+       //     console.log(results);
             res.render('admin/useds', { useds: results });
 
         });
