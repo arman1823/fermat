@@ -8,16 +8,16 @@ kit.define('product', {
     required: true
   },
   description:{
-    type:  kit.types.TEXT
+    type:  kit.types.TEXT,
   },
   parameters: {
-    type:  kit.types.TEXT
+    type:  kit.types.TEXT,
   },
   type: {
-    type: kit.types.STRING
+    type: kit.types.STRING,
   },
   picture: {
-    type: kit.types.STRING
+    type: kit.types.STRING,
   }
 
 });

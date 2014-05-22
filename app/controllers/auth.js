@@ -12,6 +12,7 @@ module.exports = {
   },
 
   authAction: function(req, res, next) {
+      //console.log(req.,info);
     passport.authenticate('local', function(err, user, info) {
       if (err) {
         next(err);

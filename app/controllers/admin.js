@@ -771,7 +771,11 @@ module.exports = {
     });
 
     if (req.files.logo && req.files.logo.size > 0) {
+     
       if (config.get('allowedImageTypes').indexOf(req.files.logo.type) != -1) {
+        console.log(req.files.logo, "logo" );
+        console.log(req.files.logo.path, "path" );
+        console.log(req.files.logo.type, "logo type" );
         var fileExt = path.extname(req.files.logo.path);
         var newFileName = fileName() + fileExt;
         var is = fs.createReadStream(req.files.logo.path);
@@ -953,7 +957,7 @@ module.exports = {
 
   products: function(req, res) {
     kit.models.product.find({}, function(err, results) {
-        console.log(results);
+        console.log(results[0].model);
       res.render('admin/products', { products: results });
 
     });
@@ -1053,6 +1057,7 @@ module.exports = {
     }
 
     kit.models.product.find({ where: { id: productId } }, function(err, results) {
+        console.log(results[0]);
       if (results.length == 0) {
         res.redirect('/admin/products');
         return;
