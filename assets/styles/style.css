@@ -75,7 +75,7 @@ h1{
 }
 .subBlock h1 {
     color: #ca1936;
-    font-size: 1.5em;
+    font-size: 15px;
     margin-bottom: 1.5em;
     font-weight: bold;
 }
@@ -118,7 +118,7 @@ padding: 0 0 20px 30px;
     line-height: 42px;
     padding: 0 0 0 20px;
     color: white;
-    font-size: 2em;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -166,4 +166,13 @@ padding: 0 0 20px 30px;
     height: 50px;
     width: 200px;
     float: right;
+}
+#top{
+    margin-left:200px;
+}
+.imaga{
+    width: 315px;
+    height: 172px;
+    border-radius: 10px;
+    margin-left: 200px;
 }
