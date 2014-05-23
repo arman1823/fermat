@@ -229,3 +229,20 @@ padding: 0 0 20px 30px;
     width: 890px;
     padding: 15px 0px;
 }
+.cont{
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 500px;
+}
+.us{
+    color: #245269;
+    margin-left:220px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+.ot{
+    font-weight: bold;
+    color: #3276b1;
+    margin-top:30px;
+margin-left:255px;
+}
