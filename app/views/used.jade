@@ -1,0 +1,36 @@
+extends layout
+block content
+    #products-page.clearfix
+        .sub-menu
+            ul.nav.nav-pills.nav-stacked
+                each usresult in usresults
+                    li
+                        a(href="/used/#{usresult.id}") #{_o(usresult.model)}
+        .subBlock.router-images
+            h1.mainTitle
+                span  !{used.type}
+                span  !{_o(used.model)}
+            p
+                if(used.picture)
+                    img.product_picture(src="/uploads/#{used.picture}")
+            p !{_o(used.description)}
+            p !{_o(used.parameters)}
+            each ima in images
+                if ima == images[bflc]
+                    .brand-map-level
+                        img.brand-box.brand-image(src="/uploads/#{ima.file}")
+                        h3.brand-level #{_l('LEVEL', 'ՀԱՐԿ')}&nbsp;
+                            if brand.floor.charAt(bflc) == "3"
+                                | III
+                            if brand.floor.charAt(bflc) == "2"
+                                | II
+                            if brand.floor.charAt(bflc) == "1"
+                                | I
+                    if bflc < bfl - 1
+                        - bflc = bflc + 1
+                else
+                    img.product_images(src="/uploads/#{ima.file}")
+                    script(src="http://platform.tumblr.com/v1/share.js")
+    mixin bx(box, rand_color)
+        var img = box.image;
+                                                                                                                
