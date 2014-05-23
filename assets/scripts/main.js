@@ -7,6 +7,19 @@ $(document).ready(function() {
         $(this).addClass("active");
     });*/
     setNavigation();
+    $('.navbar .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(1).slideDown();
+
+    }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(1).slideUp();
+
+    });
+
+    $('.navbar .dropdown > a').click(function(){
+        location.href = this.href;
+    });
+
+
 });
 
 
