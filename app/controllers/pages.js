@@ -268,11 +268,36 @@ module.exports = {
         });
     },
     useds: function(req, res){
-
+        kit.models.used.find( function(err, results) {
+            res.render('useds', { useds: results, moment: moment, S: S });
+        });
     },
 
     used: function(req, res){
+        var usedId = parseInt(req.param('id'));
 
+        if (isNaN(usedId)) {
+            res.redirect('/useds');
+            return;
+        }
+
+        kit.models.used.find({ where: { id: usedId } }, function(err, results) {
+            if (results.length == 0) {
+                res.redirect('/useds');
+                return;
+            }
+            kit.models.image.find({where:{ entity: usedId, type:"used" }, order: ['image.order ASC'] }, function(err, images){
+                if (err) {
+                    res.redirect('/useds');
+                    return;
+                }
+
+                kit.models.used.find( function(err, usresult) {
+                    res.render('used', {used: results[0], images: images, moment: moment, usresults: usresult, errors: req.flash('productError') || [], S: S });
+                });
+
+            });
+        });
     },
 
     history: function(req, res) {
