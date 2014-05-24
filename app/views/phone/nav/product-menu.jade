@@ -1,0 +1,5 @@
+.sub-menu
+    ul.nav.nav-pills.nav-stacked
+    each product in products
+        li
+            .link: a(href="/product/#{product.id}") #{_o(product.name)}
