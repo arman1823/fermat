@@ -344,6 +344,10 @@ module.exports = {
         res.render('contacts');
     },
 
+    customers: function(req, res) {
+        res.render('customers');
+    },
+
     contatsus: function(req, res) {
         res.render('contats-used');
     },

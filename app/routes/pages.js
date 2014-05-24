@@ -142,6 +142,12 @@ module.exports.bind = function(routes, controllers) {
         uri: '/contacts',
         func: controllers.pages.contacts
     });
+
+    routes.add({
+        uri: '/reference-customers',
+        func: controllers.pages.customers
+    });
+
     routes.add({
         uri: '/contats-used-machines',
         func: controllers.pages.contatsus
