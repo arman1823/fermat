@@ -1,0 +1,83 @@
+extends layout
+block content
+    #products-page.clearfix
+        .sub-menu
+            ul.nav.nav-pills.nav-stacked
+                li
+                    a(href='/history') History
+                li
+                    a(href='/production-equipment') Production Equipment
+                li
+                    a(href='/facilities') Facilities
+                li
+                    a(href='/customer-service') Customer Service
+        .subBlock.router-images
+            h1 History of FERMAT Company
+                table.table-styled.history
+                    tbody
+                        tr
+                            td
+                                p
+                                    strong FERMAT Machinery
+                                    | is a renowned Czech manufacturer of machine tools with a focus on Horizontal Boring and Milling machines. The history of the oldest Fermat member
+                                    strong dates back to 1902
+                                    | when Mr. Frantisek Wawerka started his first business and built a new factory specialized in the production of Lathes & Drilling machines. Over a one hundred year long tradition in machine tool production places the company among dominant Machine Tool Manufacturers in the European as well as the Worldwide market.
+                                p
+                                    | Today FERMAT has about 530 employees working in 8 FERMAT branches. The consolitated Annual Sales reached 57 million € in 2011.
+                            td
+                                p
+                                    img(src='/admin/files/image/fermat-company-history.jpg', alt='')
+                                p
+                                    img(src='/admin/files/image/fermat-company-history-%20boring.jpg', alt='')
+                                h2 and present...
+                                p
+                                    img(alt='', src='/admin/files/image/fermat-praha-hala.jpg')
+                                p
+                                    img(alt='', src='/admin/files/image/fermat-brno.jpg')
+            .router
+                ul
+                    li
+                        .image
+                        .link
+                            a(href='/fermat-cz-fermat-group', title='Fermat CZ  & Fermat Group') Fermat CZ  & Fermat Group
+                        .description
+                            | Fermat CZ  & Fermat Group production of horizontal boring mills. Retrofiting and repairing of WHN Horizontal boring machines. Fermat facilities is equipped by the most modern and highest quality technology.
+                            a(href='/fermat-cz-fermat-group', title='Fermat CZ  & Fermat Group') more
+                    li
+                        .image
+                        .link
+                            a(href='/pressl', title='Pressl') Pressl
+                        .description
+                            | Pressl company is specialized in retrofit of large horizontal boring mills, modernisation of heavy duty metal working machines.
+                            a(href='/pressl', title='Pressl') more
+                    li
+                        .image
+                        .link
+                            a(href='/hmb', title='HMB') HMB
+                        .description
+                            | Production of prototype moulds & parts for horizontal boring mills
+                            a(href='/hmb', title='HMB') more
+                    li
+                        .image
+                        .link
+                            a(href='/fermat-machine-tool', title='Fermat Machine Tool ') Fermat Machine Tool
+                        .description
+                            | Fermat machine Tools is 100% shareholder of ZeVo Praha Ltd. companyy. It is specialized in production of cylindrical grinding machines, traditional supplier of grinders. Facilities are equipped by the modern technology, including precision machinery such as horizontal boring and milling machines, grinding machines, slide-way grinding machines and others.
+                            a(href='/fermat-machine-tool', title='Fermat Machine Tool ') more
+                    li
+                        .image
+                        .link
+                            a(href='/strojtos-lipnik', title='Strojtos Lipník ') Strojtos Lipník
+                        .description
+                            | Fermat stroje Lipník is specialized in production of milling machines.
+                            a(href='/strojtos-lipnik', title='Strojtos Lipník ') more
+                    li
+                        .image
+                        .link
+                            a(href='/fermat-j-f-stroje-s-r-o', title='Fermat - J&F Stroje, s.r.o. ') Fermat - J&F Stroje, s.r.o.
+                        .description
+                            | Fermat - J&F Stroje, s.r.o. machining of components in Prakovce - Slovakia.
+                            a(href='/fermat-j-f-stroje-s-r-o', title='Fermat - J&F Stroje, s.r.o. ') more
+
+    mixin bx(box, rand_color)
+        var img = box.image;
