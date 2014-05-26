@@ -6,9 +6,10 @@ block content
             ul
                 each used in useds
                     li
-                        .image
-                            if(used.picture)
-                                img(src="/uploads/#{used.picture}")
-                        .link: a(href="/used/#{used.id}") #{_o(used.model)}
+                        .block
+                            .image
+                                if(used.picture)
+                                    img(src="/uploads/#{used.picture}")
+                            .link: a(href="/used/#{used.id}") #{_o(used.model)}
     mixin bx(box, rand_color)
         var img = box.image;
