@@ -1,0 +1,14 @@
+extends layout
+block content
+    #products-page.clearfix
+        include nav/submenu
+        .subBlock.router-images
+            ul
+                each equipment in equipments
+                    li
+                        .image
+                            if(equipment.picture)
+                                img(src="/uploads/#{equipment.picture}")
+                        .link: a(href="/equipment/#{equipment.id}") #{_o(equipment.model)}
+    mixin bx(box, rand_color)
+        var img = box.image;

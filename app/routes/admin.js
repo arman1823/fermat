@@ -309,4 +309,46 @@ module.exports.bind = function(routes, controllers) {
         func: controllers.admin.usedsCreate
     });
 
+
+// ########### ########### ########### ########### equipment ########### ########### ####### ########### ###########
+routes.add({
+    uri: '/admin/equipments',
+    func: controllers.admin.equipments
+});
+
+routes.add({
+    uri: '/admin/equipment/delete-picture/:id',
+    func: controllers.admin.deleteEquipmentPicture
+});
+
+routes.add({
+    uri: '/admin/equipment/delete',
+    func: controllers.admin.deleteEquipment
+});
+
+routes.add({
+    uri: '/admin/equipment/:id',
+    func: controllers.admin.equipment
+});
+
+routes.add({
+    uri: '/admin/equipment/:id',
+    method: 'post',
+    fileUpload: true,
+    func: controllers.admin.updateEquipment
+});
+
+routes.add({
+    uri: '/admin/equipments/create',
+    func: controllers.admin.equipmentsCreateView
+});
+
+routes.add({
+    uri: '/admin/equipments/create',
+    method: 'post',
+    fileUpload: true,
+    func: controllers.admin.equipmentsCreate
+});
+
+
 };

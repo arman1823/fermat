@@ -1138,6 +1138,197 @@ if(_.isArray(order)){
       res.redirect('/admin/products');
     });
   },
+
+    // ###################################################    equipment    ######################################
+
+
+    equipments: function(req, res) {
+        kit.models.equipment.find({}, function(err, results) {
+            //  console.log(results[0].model);
+            res.render('admin/equipments', { equipments: results });
+
+        });
+    },
+
+    equipmentsCreateView: function(req, res) {
+        var form = req.flash('form');
+        // console.log(form,"productsCreateView","Arman");
+        res.render('admin/createEquipment', { errors: req.flash('equipmentError') || [] ,
+            form: form.length > 0 ? form[0] : {}});
+    },
+
+    equipmentsCreate: function(req, res) {
+        var model = locales.encode(req.body.model)
+            , description = locales.encode(req.body.description)
+            , parameters = locales.encode(req.body.parameters)
+            , type = req.body.type
+            , form = req.body.form ;
+        //   console.log(req.body,"productsCreate","Arman");
+
+
+
+        var equipment = kit.models.equipment.build({
+            model: model,
+            description: description,
+            parameters: parameters,
+            type: type,
+            form: form
+        });
+
+        if (req.files.picture && req.files.picture.size > 0) {
+            if (config.get('allowedImageTypes').indexOf(req.files.picture.type) != -1) {
+                var fileExt = path.extname(req.files.picture.path);
+                var newFileName = fileName() + fileExt;
+                var is = fs.createReadStream(req.files.picture.path);
+                var os = fs.createWriteStream(config.get('path').uploads + "/" + newFileName);
+                is.pipe(os);
+                equipment.picture = newFileName;
+            }
+        }
+
+        equipment.save(function(err, id) {
+            if (err) {
+                req.flash('brandError', err.toString());
+                req.flash('form', req.body);
+                res.redirect(req.originalUrl);
+                return;
+            }
+            res.redirect('/admin/equipments');
+        });
+    },
+
+    deleteEquipment: function(req, res) {
+        var id = parseInt(req.query.id);
+
+        if (isNaN(id)) {
+            res.redirect('/admin/equipments');
+            return;
+        }
+
+        //  kit.models.homeBox.delete({ contentId: id, type: 'brands' }, function() {
+        kit.models.equipment.delete({ id: id }, function() {
+            res.redirect('/admin/equipments');
+        });
+        // });
+    },
+
+    deleteEquipmentPicture: function(req, res) {
+        var id = parseInt(req.param('id'));
+
+        if (isNaN(id)) {
+            res.redirect('/admin/equipments');
+            return;
+        }
+
+        kit.models.equipment.update({ id: id }, { picture: '' } , function(err) {
+            res.redirect('/admin/equipment/' + id);
+        });
+    },
+    deleteEquipmentImages: function(req, res) {
+        var id   = parseInt(req.param('id'));
+
+        if (isNaN(id)) {
+            res.redirect('/admin/equipment');
+            return;
+        }
+
+        kit.models.image.delete({ id: id }, function(err) {
+            res.redirect(req.get('Referrer'));
+        });
+    },
+
+    equipment: function(req, res) {
+        var equipmentId = parseInt(req.param('id'));
+
+        if (isNaN(equipmentId)) {
+            res.redirect('/admin/equipments');
+            return;
+        }
+
+        kit.models.equipment.find({ where: { id: equipmentId } }, function(err, results) {
+            //   console.log(results[0]);
+            if (results.length == 0) {
+                res.redirect('/admin/equipments');
+                return;
+            }
+            kit.models.image.find({where:{ entity: equipmentId, type:"equipment" }, order: ['image.order ASC'] }, function(err, images){
+                if (err) {
+                    res.redirect('/admin/equipments');
+                    return;
+                }
+                res.render('admin/editEquipment', { equipment: results[0], images: images, moment: moment, errors: req.flash('equipmentError') || [] });
+            });
+        });
+    },
+
+    updateEquipment: function(req, res) {
+        var model = locales.encode(req.body.model)
+            , description = locales.encode(req.body.description)
+            , parameters = locales.encode(req.body.parameters)
+            , type = req.body.type
+            , form = req.body.form
+            , picture = locales.encode(req.body.picture)
+            , images = req.body.images
+            , order = req.body.order
+            , id = req.param('id');
+
+
+
+        var equipment = {
+            model: model,
+            description: description,
+            parameters: parameters,
+            type: type,
+            form: form,
+            picture: picture
+        };
+
+        if (req.files.picture && req.files.picture.size > 0) {
+            if (config.get('allowedImageTypes').indexOf(req.files.picture.type) != -1) {
+                var fileExt = path.extname(req.files.picture.path);
+                var newFileName = fileName() + fileExt;
+                var is = fs.createReadStream(req.files.picture.path);
+                var os = fs.createWriteStream(config.get('path').uploads + "/" + newFileName);
+                is.pipe(os);
+                equipment.picture = newFileName;
+            }
+        }
+
+        if (req.files.image && req.files.image.size > 0) {
+            if (config.get('allowedImageTypes').indexOf(req.files.image.type) != -1) {
+                var fileExt = path.extname(req.files.image.path);
+                var newFileName = fileName() + fileExt;
+                var is = fs.createReadStream(req.files.image.path);
+                var os = fs.createWriteStream(config.get('path').uploads + "/" + newFileName);
+                is.pipe(os);
+
+                kit.models.image.build({
+                    file: newFileName,
+                    entity: id,
+                    type: 'equipment'
+                }).save(function(err){});
+            }
+        }
+        if(_.isArray(order)){
+            _.forEach(order, function(v, k) {
+                k = parseInt(k.replace('id', ''));
+                v = parseInt(v);
+                if (isNaN(k) || isNaN(v)) { return;}
+                kit.models.image.update({ id: k }, { order: v }, function() {});
+            });
+        };
+
+
+
+        kit.models.equipment.update({ id: id }, equipment, function(err) {
+            if (err) {
+                req.flash('equipmentError', err.toString());
+                res.redirect(req.originalUrl);
+                return
+            }
+            res.redirect('/admin/equipments');
+        });
+    },
     // ################################################### USED   PRODUCTS    ######################################
 
 

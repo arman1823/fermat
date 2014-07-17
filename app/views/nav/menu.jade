@@ -118,6 +118,49 @@
                                                 a(href='/product/31', title='')
                                                     span
                                                         | BUB E 32/40/50
+                    li.dropdown
+                        a.dropdown-toggle.prod(href='/equipments', data-toggle='dropdown')
+                            | #{_l('Equipment', 'Zařízení','Equipo','Oборудование')}
+                            b.caret
+                        ul.dropdown-menu
+                            .anchors
+                                .p-box.n1
+                                    .menublock
+                                        p.title Tools
+                                        ul
+                                            li.sm1
+                                                a(href='/equipments/newTools', title='')
+                                                    span
+                                                        | New Tools
+                                            li.sm2
+                                                a(href='/equipments/usedTools', title='')
+                                                    span
+                                                        | Used Tools
+                                    .menublock
+                                        p.title
+                                            | Tractors
+                                        ul
+                                            li.sm8
+                                                a(href='/equipments/newTractors', title='')
+                                                    span
+                                                        | New Tractors
+                                            li.sm9
+                                                a(href='/equipments/usedTractors', title='')
+                                                    span
+                                                        | Used Tractors
+                                    .menublock
+                                        p.title
+                                            | Machinery
+                                        ul
+                                            li.sm12
+                                                a(href='/equipments/newMachinery', title='')
+                                                    span
+                                                        | New Machinery
+                                            li.sm13
+                                                a(href='/equipments/usedMachinery', title='')
+                                                    span
+                                                        | Used Machinery
+
                     li
                         a(href='/reference-customers')
                             | #{_l('References and Photos', 'Reference a foto','Referencías y Fotografía','Референции и фото')}

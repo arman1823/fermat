@@ -1,0 +1,4 @@
+{
+    "locales": ["en", "cz","es","ru"],
+    "postgresUrl": "postgres://zft_user:zft_pass@localhost:5432/zft_db"
+}

@@ -1,0 +1,31 @@
+extends layout
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/equipments/create") Create Equipment
+        .panel-body
+            table.table.table-hover
+                thead
+                    tr
+                        th Model
+                        th Description
+                        th Parameters
+                        th Type
+                        th Form
+                        th Picture
+                        th Delete
+                tbody
+                    each equipment in equipments
+                        tr
+                            td: a(href="/admin/equipment/#{equipment.id}") #{_o(equipment.model)}
+                            td !{_o(equipment.description)}
+                            td !{_o(equipment.parameters)}
+                            td !{equipment.type}
+                            td !{equipment.form}
+                            td
+                                if(equipment.picture)
+                                    img(src="/uploads/#{equipment.picture}", width="100")
+                            td
+                                a.edit(href="/admin/equipment/#{equipment.id}") Edit
+                                br
+                                a.delete(href="/admin/equipment/delete?id=#{equipment.id}") Delete

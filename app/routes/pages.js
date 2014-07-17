@@ -21,6 +21,39 @@ module.exports.bind = function(routes, controllers) {
     });
 
     routes.add({
+        uri: '/equipments',
+        func: controllers.pages.equipments
+    });
+    routes.add({
+        uri: '/equipments/newTools',
+        func: controllers.pages.equipmentsnewTools
+    });
+    routes.add({
+        uri: '/equipments/usedTools',
+        func: controllers.pages.equipmentsusedTools
+    });
+    routes.add({
+        uri: '/equipments/newTractors',
+        func: controllers.pages.equipmentsnewTractors
+    });
+    routes.add({
+        uri: '/equipments/usedTractors',
+        func: controllers.pages.equipmentsusedTractors
+    });
+    routes.add({
+        uri: '/equipments/newMachinery',
+        func: controllers.pages.equipmentsnewMachinery
+    });
+    routes.add({
+        uri: '/equipments/usedMachinery',
+        func: controllers.pages.equipmentsusedMachinery
+    });
+    routes.add({
+        uri: '/equipment/:id',
+        func: controllers.pages.equipment
+    });
+
+    routes.add({
         uri: '/useds',
         func: controllers.pages.useds
     });
@@ -37,7 +70,7 @@ module.exports.bind = function(routes, controllers) {
     });
     routes.add({
         uri: '/production-equipment',
-        func: controllers.pages.equipment
+        func: controllers.pages.equipmentq
     });
     routes.add({
         uri: '/facilities',

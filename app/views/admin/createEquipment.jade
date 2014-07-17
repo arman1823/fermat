@@ -1,0 +1,53 @@
+extends layout
+block content
+    .panel.panel-default
+        .panel-heading
+            a.btn.btn-primary(href="/admin/equipments") Equipment List
+        form(action="/admin/equipments/create", enctype="multipart/form-data", method="post")
+            .panel-body
+                if errors
+                    each error in errors
+                        .alert.alert-warning.alert-dismissable
+                            button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+                            | #{error}
+                .col-md-8.col-md-offset-2
+                    ul.nav.nav-pills
+                        each locale, i in locales()
+                            li(class=i==0?"active":""): a(href="#lang_#{locale.locale}", data-toggle="pill") #{locale.locale}
+                    div.tab-content
+                        each locale, i in locales()
+                            div.tab-pane(class=i==0?"active":"", id="lang_#{locale.locale}")
+                                .row
+                                    .form-group.col-md-6
+                                        label Model
+                                        input.form-control(type="text", name="model[#{locale.locale}]", value="#{form.model ? form.model[locale.locale] : ''}", autocomplete="off")
+                                .row
+                                    .form-group.col-md-12
+                                        label Description
+                                        textarea.form-control(name="description[#{locale.locale}]") #{form.description ? form.description[locale.locale] : ''}
+                                .row
+                                    .form-group.col-md-12
+                                        label Parameters
+                                        textarea.form-control(name="parameters[#{locale.locale}]") #{form.parameters ? form.parameters[locale.locale] : ''}
+                    .row
+                        .form-group.col-md-6
+                            label(for="type-select") Type
+                            select#brand-section-select(data-placeholder="Please choose a type", autocomplete="off", name="type")
+                                option(value="")
+                                option(value="Tools", selected=form.type=='Tools') Tools
+                                option(value="Tractors", selected=form.type=='Tractors') Tractors
+                                option(value="Machinery", selected=form.type=='Milling machines') Machinery
+                                .row
+                                .form-group.col-md-6
+                            label(for="form-select") Form
+                            select#brand-section-select(data-placeholder="Please choose a form", autocomplete="off", name="form")
+                                option(value="")
+                                option(value="new", selected=form.form=='new') New
+                                option(value="used", selected=form.form=='used') Used
+                                .row
+                                .form-group.col-md-6
+                            label(for="picture") Picture
+                            input#logo(type="file", name="picture", tabindex="5")
+            .panel-footer
+                button.btn.btn-primary.pull-right(type="submit", tabindex="6") Save
+                .clearfix
